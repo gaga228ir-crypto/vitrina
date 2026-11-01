@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Автосервис Мотор — автосервис в г. Казань</title>
+<meta name="description" content="Автосервис Мотор: ремонт и обслуживание автомобилей в г. Казань. Диагностика, ТО, ремонт подвески и двигателя. Запись по телефону +7 843 000-00-00.">
+<style>
+:root{
+  --bg:#0b0d12; --bg2:#10131a; --panel:#151922; --panel2:#1b202b; --line:#262c39;
+  --text:#f2f4f8; --muted:#9aa4b5; --accent:#ff6a13; --accent2:#ffa24a; --gold:#ffc24a;
+  --r:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+
+/* прогресс прокрутки */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:50}
+
+/* шапка */
+header{position:sticky;top:0;z-index:40;background:rgba(11,13,18,.72);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+header.solid{border-color:var(--line);background:rgba(11,13,18,.9)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:10px}
+.logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal;font-size:16px;box-shadow:0 6px 18px rgba(255,106,19,.4)}
+nav{display:flex;gap:28px;color:var(--muted);font-size:15px}
+nav a{position:relative;padding:4px 0;transition:color .2s}
+nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent);transition:width .3s var(--ease)}
+nav a:hover{color:var(--text)} nav a:hover::after{width:100%}
+.tel{font-weight:700;white-space:nowrap}
+
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#ff8a2a);color:#fff;font-weight:700;font-size:16px;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 10px 28px rgba(255,106,19,.35);overflow:hidden}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,106,19,.5)}
+.btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 3.6s infinite}
+@keyframes shine{0%,60%{left:-80%}100%{left:140%}}
+.btn.ghost{background:rgba(255,255,255,.04);border:1px solid var(--line);box-shadow:none;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent);background:rgba(255,106,19,.08)}
+.btn.ghost::after{display:none}
+.pulse{animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,106,19,.55)}70%{box-shadow:0 0 0 16px rgba(255,106,19,0)}100%{box-shadow:0 0 0 0 rgba(255,106,19,0)}}
+
+/* первый экран */
+.hero{position:relative;padding:70px 0 40px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(900px 500px at 78% 8%,rgba(255,106,19,.26),transparent 62%),
+  radial-gradient(700px 400px at 5% 90%,rgba(80,110,255,.12),transparent 60%),
+  var(--bg)}
+.hero .photo{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;opacity:.22;mask-image:linear-gradient(180deg,#000 30%,transparent)}
+.grain{position:absolute;inset:0;z-index:-1;opacity:.5;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(70% 70% at 70% 30%,#000,transparent)}
+.hero .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center}
+.badge{display:inline-flex;gap:10px;align-items:center;padding:8px 16px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:14px;background:rgba(21,25,34,.8)}
+.badge b{color:var(--gold)}
+.dot{width:8px;height:8px;border-radius:50%;background:#35c46a;box-shadow:0 0 0 0 rgba(53,196,106,.7);animation:pulse2 2s infinite}
+@keyframes pulse2{70%{box-shadow:0 0 0 10px rgba(53,196,106,0)}100%{box-shadow:0 0 0 0 rgba(53,196,106,0)}}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.05;margin:22px 0 18px;letter-spacing:-1px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:18px;max-width:540px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:40px}
+.fact b{display:block;font-size:30px;letter-spacing:-.5px}
+.fact span{color:var(--muted);font-size:14px}
+
+/* машина */
+.scene{position:relative;aspect-ratio:1.18;max-width:560px;margin-left:auto;width:100%}
+.glow{position:absolute;inset:12% 6% 22%;background:radial-gradient(closest-side,rgba(255,106,19,.45),transparent);filter:blur(28px);animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.55;transform:scale(1.08)}}
+.car{position:absolute;left:0;right:0;top:12%;width:100%;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 30px 30px rgba(0,0,0,.55))}
+@keyframes float{50%{transform:translateY(-8px)}}
+.wheel{transform-box:fill-box;transform-origin:center;animation:spin 1.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.road{position:absolute;left:-10%;right:-10%;bottom:18%;height:4px;overflow:hidden}
+.road i{position:absolute;top:0;left:0;width:200%;height:4px;background:repeating-linear-gradient(90deg,#3a4150 0 46px,transparent 46px 92px);animation:road 1s linear infinite}
+@keyframes road{to{transform:translateX(-92px)}}
+.chip{position:absolute;padding:10px 14px;border-radius:14px;background:rgba(21,25,34,.9);border:1px solid var(--line);backdrop-filter:blur(8px);font-size:13px;display:flex;gap:9px;align-items:center;animation:float 6s ease-in-out infinite}
+.chip b{display:block;font-size:15px}
+.chip small{color:var(--muted);display:block}
+.chip.a{top:4%;left:2%} .chip.b{bottom:6%;right:0;animation-delay:-2.5s}
+.chip .ic{width:34px;height:34px;border-radius:10px;background:rgba(255,106,19,.16);display:grid;place-items:center}
+
+/* бегущая строка */
+.marquee{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:16px 0}
+.track{display:flex;gap:46px;width:max-content;animation:slide 32s linear infinite;color:#6f7a8d;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:14px}
+.track span::before{content:"✦";color:var(--accent);margin-right:46px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* секции */
+section{padding:84px 0}
+section.alt{background:var(--bg2)}
+.eyebrow{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.8px;line-height:1.1;margin-bottom:12px}
+.sub{color:var(--muted);margin-bottom:40px;max-width:620px;font-size:17px}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{position:relative;background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;overflow:hidden}
+.svc::before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:radial-gradient(300px 160px at var(--mx,50%) var(--my,0%),rgba(255,106,19,.22),transparent 70%);opacity:0;transition:opacity .3s}
+.svc:hover{transform:translateY(-6px);border-color:rgba(255,106,19,.6);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.svc:hover::before{opacity:1}
+.svc>*{position:relative}
+.svc .ic{width:52px;height:52px;border-radius:15px;background:rgba(255,106,19,.13);display:grid;place-items:center;color:var(--accent);transition:transform .4s var(--ease)}
+.svc:hover .ic{transform:rotate(-8deg) scale(1.1)}
+.svc h3{font-size:19px}
+.svc p{color:var(--muted);font-size:14.5px;flex:1}
+.price{font-weight:800;color:var(--accent2);font-size:17px}
+
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why div{padding:26px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line)}
+.why b{display:block;font-size:40px;letter-spacing:-1px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:4px}
+.why span{color:var(--muted);font-size:14.5px}
+
+.gallery{display:grid;grid-template-columns:repeat(var(--cols,4),1fr);grid-auto-rows:230px;gap:14px}
+.gallery figure{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid var(--line);background:var(--panel)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gallery figure:hover img{transform:scale(1.08)}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+.steps div{position:relative;padding:26px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line)}
+.steps .n{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));font-weight:800;margin-bottom:14px;box-shadow:0 8px 20px rgba(255,106,19,.35)}
+.steps b{display:block;margin-bottom:5px;font-size:17px}
+.steps span{color:var(--muted);font-size:14.5px}
+
+.rating{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding:34px;border-radius:var(--r);background:linear-gradient(135deg,var(--panel),#1a1410);border:1px solid var(--line)}
+.rating .num{font-size:72px;font-weight:800;line-height:1;letter-spacing:-2px}
+.stars{color:var(--gold);font-size:26px;letter-spacing:3px}
+.rating p{color:var(--muted);max-width:440px}
+
+.contacts{display:grid;grid-template-columns:1fr 1.25fr;gap:26px}
+.contacts .row{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:center}
+.contacts .row:last-child{border:0}
+.contacts .ic{flex:none;width:44px;height:44px;border-radius:13px;background:rgba(255,106,19,.13);display:grid;place-items:center;color:var(--accent)}
+.contacts small{display:block;color:var(--muted);font-size:13px}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:380px;background:var(--panel)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0;filter:invert(.9) hue-rotate(180deg) contrast(.9)}
+
+/* форма */
+.formsec{background:radial-gradient(800px 360px at 50% 0%,rgba(255,106,19,.18),transparent 70%),var(--bg)}
+.card{max-width:640px;margin:0 auto;background:rgba(21,25,34,.92);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.card h2{font-size:30px}
+.card p.s{color:var(--muted);margin-bottom:20px}
+label{display:block;font-size:13px;color:var(--muted);margin:14px 0 7px}
+input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font:inherit;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,106,19,.18)}
+.card .btn{width:100%;margin-top:22px}
+.note{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+
+footer{padding:30px 0 100px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+.fab{display:none}
+
+/* появление при прокрутке */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.hero .in-load{opacity:0;transform:translateY(22px);animation:up .9s var(--ease) forwards;animation-delay:var(--d,0s)}
+@keyframes up{to{opacity:1;transform:none}}
+
+@media(max-width:900px){
+  nav{display:none}
+  .hero{padding:36px 0 20px}
+  .hero .grid,.contacts{grid-template-columns:1fr}
+  .scene{max-width:440px;margin:6px auto 0}
+  .services,.why,.steps{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:160px}
+  section{padding:56px 0}
+  .fab{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:45;gap:10px}
+  .fab a{flex:1;text-align:center;padding:15px;border-radius:14px;font-weight:700;box-shadow:0 10px 28px rgba(0,0,0,.5)}
+  .fab .c{background:linear-gradient(135deg,var(--accent),#ff8a2a);color:#fff}
+  .fab .w{background:#25d366;color:#06240f}
+}
+@media(max-width:540px){.services,.why,.steps{grid-template-columns:1fr}.tel,.nav .btn{display:none}.facts{gap:22px}.chip{display:none}.card{padding:24px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.hero .in-load{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a class="logo" href="#top"><i>⚙</i>Автосервис Мотор</a>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#why">Почему мы</a>
+      
+      <a href="#how">Как записаться</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="tel" href="tel:+78430000000">+7 843 000-00-00</a>
+    <a class="btn" href="#form">Записаться</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  
+  <div class="grain"></div>
+  <div class="wrap grid">
+    <div>
+      <span class="badge in-load"><span class="dot"></span><b>★ 4.8</b> 120 отзывов на картах</span>
+      <h1 class="in-load" style="--d:.1s">Ремонт авто в Казани: <em>честно</em>, быстро и с гарантией</h1>
+      <p class="lead in-load" style="--d:.2s">Диагностика, плановое ТО, ходовая, двигатель и кузов. Сначала называем цену, потом делаем работу. Без «внезапных» доплат.</p>
+      <div class="cta in-load" style="--d:.3s">
+        <a class="btn pulse" href="tel:+78430000000">Позвонить +7 843 000-00-00</a>
+        <a class="btn ghost" href="https://wa.me/78430000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82." target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+      <div class="facts in-load" style="--d:.4s">
+        <div class="fact"><b data-to="4.8" data-dec="1">4.8</b><span>рейтинг клиентов</span></div>
+        <div class="fact"><b>6 мес.</b><span>гарантия на работы</span></div>
+        <div class="fact"><b>0 ₽</b><span>осмотр и консультация</span></div>
+      </div>
+    </div>
+
+    <div class="scene in-load" style="--d:.25s" aria-hidden="true">
+      <div class="glow"></div>
+      <svg class="car" viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a4258"/><stop offset="1" stop-color="#1a1f2c"/></linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f86a8"/><stop offset="1" stop-color="#27324a"/></linearGradient>
+          <radialGradient id="lamp"><stop offset="0" stop-color="#fff6d6"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient>
+          <g id="rim">
+            <circle r="34" fill="#0d0f14"/><circle r="26" fill="#2a303d"/>
+            <g stroke="#9aa4b5" stroke-width="4" stroke-linecap="round"><path d="M0-22V22M-22 0H22M-15.5-15.5L15.5 15.5M-15.5 15.5L15.5-15.5"/></g>
+            <circle r="7" fill="#ff6a13"/>
+          </g>
+        </defs>
+        <ellipse cx="260" cy="212" rx="210" ry="9" fill="#000" opacity=".45"/>
+        <path d="M26 160C26 138 44 130 76 127L128 72C140 60 156 54 174 54H330C348 54 362 60 374 73L410 122C452 126 492 134 494 160V176H26Z" fill="url(#body)" stroke="#4a546c" stroke-width="2"/>
+        <path d="M146 80L175 63H250V122H112Z" fill="url(#glass)"/>
+        <path d="M262 63H330C340 63 348 67 355 75L385 122H262Z" fill="url(#glass)"/>
+        <path d="M30 150H486" stroke="#ff6a13" stroke-width="3" opacity=".8"/>
+        <rect x="440" y="136" width="46" height="14" rx="7" fill="#ffd9a0"/>
+        <circle cx="486" cy="143" r="46" fill="url(#lamp)" opacity=".8"/>
+        <rect x="28" y="140" width="22" height="12" rx="6" fill="#ff3b30"/>
+        <path d="M252 63V122" stroke="#10131a" stroke-width="5"/>
+        <rect x="270" y="132" width="24" height="5" rx="2.5" fill="#10131a"/>
+        <g transform="translate(120 176)"><circle r="40" fill="#10131a"/><use class="wheel" href="#rim"/></g>
+        <g transform="translate(400 176)"><circle r="40" fill="#10131a"/><use class="wheel" href="#rim"/></g>
+      </svg>
+      <div class="road"><i></i></div>
+      <div class="chip a"><span class="ic">🔧</span><span><b>Диагностика</b><small>бесплатный осмотр</small></span></div>
+      <div class="chip b"><span class="ic">🛡️</span><span><b>Гарантия 6 мес.</b><small>на все работы</small></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Kia</span><span>Hyundai</span><span>Toyota</span><span>Volkswagen</span><span>Skoda</span><span>Lada</span><span>Renault</span><span>Nissan</span><span>BMW</span><span>Mercedes</span><span>Mazda</span><span>Ford</span>
+    <span>Kia</span><span>Hyundai</span><span>Toyota</span><span>Volkswagen</span><span>Skoda</span><span>Lada</span><span>Renault</span><span>Nissan</span><span>BMW</span><span>Mercedes</span><span>Mazda</span><span>Ford</span>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow rv">Услуги</div>
+    <h2 class="rv">Что мы делаем</h2>
+    <p class="sub rv">Основные услуги. Точную стоимость назовём после бесплатной диагностики, до начала работ.</p>
+    <div class="services">
+      <div class="svc rv"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M8 11h6M11 8v6"/></svg></div><h3>Компьютерная диагностика</h3><p>Считываем ошибки, проверяем датчики и электрику, находим причину, а не лечим симптомы.</p><div class="price">от 800 ₽</div></div>
+      <div class="svc rv" style="--d:.08s"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg></div><h3>Замена масла и ТО</h3><p>Масло, фильтры, жидкости. Работаем по регламенту производителя, оригинал и аналоги.</p><div class="price">от 1 200 ₽</div></div>
+      <div class="svc rv" style="--d:.16s"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg></div><h3>Ходовая и подвеска</h3><p>Рычаги, стойки, ступицы, шаровые. Устраняем стуки и уводы, делаем развал-схождение.</p><div class="price">от 1 500 ₽</div></div>
+      <div class="svc rv"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6Z"/></svg></div><h3>Двигатель и КПП</h3><p>Ремонт и замена ГРМ, прокладок, сцепления. Ремонт АКПП и вариаторов.</p><div class="price">от 3 000 ₽</div></div>
+      <div class="svc rv" style="--d:.08s"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Тормозная система</h3><p>Колодки, диски, суппорты, прокачка. Безопасность без компромиссов.</p><div class="price">от 1 000 ₽</div></div>
+      <div class="svc rv" style="--d:.16s"><div class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div><h3>Автоэлектрика</h3><p>Аккумулятор, генератор, стартер, проводка, свет. Поиск и устранение утечек тока.</p><div class="price">от 1 000 ₽</div></div>
+    </div>
+    <p class="note rv" style="text-align:left;margin-top:18px">Цены ориентировочные, уточняйте по телефону +7 843 000-00-00.</p>
+  </div>
+</section>
+
+<section class="alt" id="why">
+  <div class="wrap">
+    <div class="eyebrow rv">Преимущества</div>
+    <h2 class="rv">Почему выбирают нас</h2>
+    <p class="sub rv">Мы работаем так, чтобы к нам возвращались и приводили друзей.</p>
+    <div class="why">
+      <div class="rv"><b data-to="4.8" data-dec="1">4.8</b><span>средняя оценка клиентов на картах</span></div>
+      <div class="rv" style="--d:.08s"><b data-to="120">120</b><span>отзывов от реальных клиентов</span></div>
+      <div class="rv" style="--d:.16s"><b>6 мес.</b><span>гарантия на выполненные работы</span></div>
+      <div class="rv" style="--d:.24s"><b>1 день</b><span>большинство ремонтов делаем за день</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow rv">Процесс</div>
+    <h2 class="rv">Как записаться</h2>
+    <p class="sub rv">Четыре шага, никаких очередей и сюрпризов.</p>
+    <div class="steps">
+      <div class="rv"><div class="n">1</div><b>Звонок или заявка</b><span>Расскажите, что случилось с машиной.</span></div>
+      <div class="rv" style="--d:.1s"><div class="n">2</div><b>Диагностика</b><span>Находим причину и называем цену до начала работ.</span></div>
+      <div class="rv" style="--d:.2s"><div class="n">3</div><b>Ремонт</b><span>Делаем только согласованное, детали показываем.</span></div>
+      <div class="rv" style="--d:.3s"><div class="n">4</div><b>Гарантия</b><span>Выдаём чек и гарантию на работы и запчасти.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="rating rv">
+      <div class="num">4.8</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <b>120 отзывов</b>
+      </div>
+      <p>Отзывы клиентов можно прочитать на картах: найдите «Автосервис Мотор» в 2ГИС, Яндекс Картах или Google Картах.</p>
+    </div>
+  </div>
+</section>
+
+<section class="formsec" id="form">
+  <div class="wrap">
+    <form class="card rv" onsubmit="return send(event)">
+      <h2>Запись на ремонт</h2>
+      <p class="s">Оставьте данные, и мы перезвоним в течение 15 минут в рабочее время.</p>
+      <label for="n">Ваше имя</label>
+      <input id="n" name="n" placeholder="Как к вам обращаться" required>
+      <label for="p">Телефон</label>
+      <input id="p" name="p" type="tel" placeholder="+7 ___ ___-__-__" required>
+      <label for="c">Автомобиль и что случилось</label>
+      <textarea id="c" name="c" rows="3" placeholder="Например: Kia Rio 2017, стук в подвеске"></textarea>
+      <button class="btn" type="submit">Отправить заявку</button>
+      <p class="note">Заявка откроется в WhatsApp. Нажимая кнопку, вы соглашаетесь на обработку данных.</p>
+    </form>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="wrap">
+    <div class="eyebrow rv">Контакты</div>
+    <h2 class="rv">Приезжайте или звоните</h2>
+    <p class="sub rv">Ответим на любые вопросы.</p>
+    <div class="contacts">
+      <div class="rv">
+        <div class="row"><span class="ic">📍</span><div><small>Адрес</small>ул. Примерная, 1</div></div>
+        <div class="row"><span class="ic">📞</span><div><small>Телефон</small><a href="tel:+78430000000">+7 843 000-00-00</a></div></div>
+        <div class="row"><span class="ic">🕘</span><div><small>Режим работы</small>Ежедневно, 09:00–20:00</div></div>
+        <div class="row"><a class="btn" href="https://wa.me/78430000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82." target="_blank" rel="noopener">Написать в WhatsApp</a></div>
+      </div>
+      <div class="map rv" style="--d:.1s">
+        <iframe loading="lazy" title="Карта" src="https://www.google.com/maps?q=%D0%90%D0%B2%D1%82%D0%BE%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%20%D0%9C%D0%BE%D1%82%D0%BE%D1%80%20%D1%83%D0%BB.%20%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BD%D0%B0%D1%8F%2C%201%20%D0%9A%D0%B0%D0%B7%D0%B0%D0%BD%D1%8C&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Автосервис Мотор, Казань. Информация на сайте не является публичной офертой.</div>
+</footer>
+
+<div class="fab">
+  <a class="c" href="tel:+78430000000">Позвонить</a>
+  <a class="w" href="https://wa.me/78430000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D1%80%D0%B5%D0%BC%D0%BE%D0%BD%D1%82." target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+// прогресс и шапка
+var bar=document.getElementById('bar'),hd=document.getElementById('hd');
+addEventListener('scroll',function(){
+  var h=document.documentElement;
+  bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  hd.classList.toggle('solid',h.scrollTop>20);
+},{passive:true});
+
+// появление блоков и счётчики
+function count(el){
+  var to=parseFloat(el.dataset.to),dec=+el.dataset.dec||0,t0=performance.now(),dur=1400;
+  if(isNaN(to))return;
+  (function tick(t){
+    var k=Math.min((t-t0)/dur,1),e=1-Math.pow(1-k,3);
+    el.textContent=(to*e).toFixed(dec);
+    if(k<1)requestAnimationFrame(tick);
+  })(t0);
+}
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){
+  es.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-to]').forEach(count);
+    io.unobserve(e.target);
+  });
+},{threshold:.15}):null;
+document.querySelectorAll('.rv').forEach(function(el){io?io.observe(el):el.classList.add('in')});
+document.querySelectorAll('.hero [data-to]').forEach(count);
+
+// подсветка карточек за курсором
+document.querySelectorAll('.svc').forEach(function(c){
+  c.addEventListener('pointermove',function(e){
+    var r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    c.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+});
+
+function send(e){
+  e.preventDefault();
+  var f=e.target;
+  var t='Здравствуйте! Заявка с сайта.%0AИмя: '+encodeURIComponent(f.n.value)
+       +'%0AТелефон: '+encodeURIComponent(f.p.value)
+       +'%0AАвто / проблема: '+encodeURIComponent(f.c.value);
+  window.open('https://wa.me/78430000000?text='+t,'_blank');
+  return false;
+}
+</script>
+</body>
+</html>

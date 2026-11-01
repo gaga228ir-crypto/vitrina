@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ветклиника «Лапа» — ветклиника</title>
+<meta name="description" content="Ветклиника «Лапа»: Приём врачей, вакцинация, анализы, хирургия и вызов на дом. Телефон +7 900 000-00-00.">
+<style>
+:root{
+  --bg:#f2f8f4;
+  --bg2:#e0efe6;
+  --panel:#ffffff;
+  --line:#cde3d6;
+  --text:#14291d;
+  --muted:#587364;
+  --accent:#e0583e;
+  --accent2:#f08568;
+  --onaccent:#ffffff;
+  --hdr:rgba(242,248,244,0.86);
+  --glowc:rgba(224,88,62,0.35);
+  --glowbg:rgba(224,88,62,0.14);
+  --shadowc:rgba(40,30,25,.12);
+  --r:20px; --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+svg.i{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:50}
+header{position:sticky;top:0;z-index:40;background:var(--hdr);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+header.solid{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:10px}
+.logo i{width:32px;height:32px;border-radius:10px;background:var(--accent);color:var(--onaccent);display:grid;place-items:center;font-size:18px}
+nav{display:flex;gap:28px;color:var(--muted);font-size:15px}
+nav a{position:relative;padding:4px 0;transition:color .2s}
+nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent);transition:width .3s var(--ease)}
+nav a:hover{color:var(--text)}nav a:hover::after{width:100%}
+.tel{font-weight:700;white-space:nowrap}
+nav a{white-space:nowrap}.logo{min-width:0}.ln{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:250px}
+.nav .btn{white-space:nowrap;padding:12px 18px;font-size:15px}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:14px;background:var(--accent);color:var(--onaccent);font-weight:700;font-size:16px;border:0;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 10px 28px var(--glowc);overflow:hidden}
+.btn:hover{transform:translateY(-2px)}
+.btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);animation:shine 3.6s infinite}
+@keyframes shine{0%,60%{left:-80%}100%{left:140%}}
+.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--text)}
+.btn.ghost:hover{border-color:var(--accent)}.btn.ghost::after{display:none}
+.pulse{animation:pulse 2.2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--glowc)}70%{box-shadow:0 0 0 16px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.hero{position:relative;padding:70px 0 44px;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(900px 500px at 80% 0%,var(--glowbg),transparent 62%),var(--bg)}
+.hero .photo{position:absolute;inset:0;z-index:-1;background-size:cover;background-position:center;opacity:.22;mask-image:linear-gradient(180deg,#000 30%,transparent)}
+.hero .grid{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center}
+.badge{display:inline-flex;gap:10px;align-items:center;padding:8px 16px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:14px;background:var(--panel)}
+.badge b{color:var(--accent)}
+.dot{width:8px;height:8px;border-radius:50%;background:#35c46a;animation:pulse2 2s infinite}
+@keyframes pulse2{70%{box-shadow:0 0 0 10px rgba(53,196,106,0)}100%{box-shadow:0 0 0 0 rgba(53,196,106,0)}}
+h1{font-size:clamp(34px,5.2vw,58px);line-height:1.05;margin:22px 0 18px;letter-spacing:-1px}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{color:var(--muted);font-size:18px;max-width:540px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:40px}
+.fact b{display:block;font-size:30px;letter-spacing:-.5px}.fact span{color:var(--muted);font-size:14px}
+.scene{position:relative;aspect-ratio:1.1;max-width:540px;margin-left:auto;width:100%}
+.blob{position:absolute;inset:8% 8% 12%;border-radius:50%;background:var(--accent);opacity:.14;animation:breathe 5s ease-in-out infinite}
+.ring{position:absolute;inset:18%;border-radius:50%;border:2px dashed var(--accent);opacity:.5;animation:rot 40s linear infinite}
+@keyframes breathe{50%{transform:scale(1.05)}}@keyframes rot{to{transform:rotate(360deg)}}
+.big{position:absolute;inset:26%;color:var(--accent);animation:float 6s ease-in-out infinite}
+.big svg{width:100%;height:100%;stroke-width:1.1}
+@keyframes float{50%{transform:translateY(-10px) rotate(2deg)}}
+.chip{position:absolute;padding:10px 14px;border-radius:14px;background:var(--panel);border:1px solid var(--line);font-size:13px;display:flex;gap:10px;align-items:center;box-shadow:0 12px 30px var(--shadowc);animation:float 6s ease-in-out infinite}
+.chip b{display:block;font-size:15px}.chip small{color:var(--muted);display:block}
+.chip .ic{width:34px;height:34px;border-radius:10px;background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent);display:grid;place-items:center;font-size:18px}
+.chip.a{top:6%;left:0}.chip.b{bottom:10%;right:0;animation-delay:-2.5s}
+.marquee{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:16px 0}
+.track{display:flex;gap:46px;width:max-content;animation:slide 34s linear infinite;color:var(--muted);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:14px}
+.track span::before{content:"✦";color:var(--accent);margin-right:46px}
+@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:84px 0}section.alt{background:var(--bg2)}
+.eyebrow{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.8px;line-height:1.1;margin-bottom:12px}
+.sub{color:var(--muted);margin-bottom:40px;max-width:620px;font-size:17px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:12px;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+.svc:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 20px 40px var(--shadowc)}
+.svc .ic{width:52px;height:52px;border-radius:15px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);display:grid;place-items:center;font-size:26px;transition:transform .4s var(--ease)}
+.svc:hover .ic{transform:rotate(-8deg) scale(1.1)}
+.svc h3{font-size:19px}.svc p{color:var(--muted);font-size:14.5px;flex:1}
+.price{font-weight:800;color:var(--accent);font-size:17px}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why div{padding:26px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line)}
+.why b{display:block;font-size:40px;letter-spacing:-1px;color:var(--accent);margin-bottom:4px}.why span{color:var(--muted);font-size:14.5px}
+.gallery{display:grid;grid-template-columns:repeat(var(--cols,4),1fr);grid-auto-rows:230px;gap:14px}
+.gallery figure{overflow:hidden;border-radius:var(--r);border:1px solid var(--line);background:var(--panel)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}.gallery figure:hover img{transform:scale(1.08)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.steps div{padding:26px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line)}
+.steps .n{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--onaccent);font-weight:800;margin-bottom:14px}
+.steps b{display:block;margin-bottom:5px;font-size:17px}.steps span{color:var(--muted);font-size:14.5px}
+.rating{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding:34px;border-radius:var(--r);background:var(--panel);border:1px solid var(--line)}
+.rating .num{font-size:72px;font-weight:800;line-height:1;letter-spacing:-2px}
+.stars{color:var(--accent);font-size:26px;letter-spacing:3px}.rating p{color:var(--muted);max-width:440px}
+.contacts{display:grid;grid-template-columns:1fr 1.25fr;gap:26px}
+.contacts .row{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:center}.contacts .row:last-child{border:0}
+.contacts .ic{flex:none;width:44px;height:44px;border-radius:13px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);display:grid;place-items:center;font-size:20px}
+.contacts small{display:block;color:var(--muted);font-size:13px}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);min-height:380px;background:var(--panel)}
+.map iframe{width:100%;height:100%;min-height:380px;border:0}
+.formsec{background:radial-gradient(800px 360px at 50% 0%,var(--glowbg),transparent 70%),var(--bg)}
+.card{max-width:640px;margin:0 auto;background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:34px;box-shadow:0 30px 60px var(--shadowc)}
+.card h2{font-size:30px}.card p.s{color:var(--muted);margin-bottom:20px}
+label{display:block;font-size:13px;color:var(--muted);margin:14px 0 7px}
+input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--text);font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--accent);border-color:transparent}
+.card .btn{width:100%;margin-top:22px}.note{font-size:12px;color:var(--muted);margin-top:14px;text-align:center}
+footer{padding:30px 0 100px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+.fab{display:none}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}.rv.in{opacity:1;transform:none}
+.hero .in-load{opacity:0;transform:translateY(22px);animation:up .9s var(--ease) forwards;animation-delay:var(--d,0s)}
+@keyframes up{to{opacity:1;transform:none}}
+@media(max-width:900px){nav{display:none}.hero{padding:36px 0 20px}.hero .grid,.contacts{grid-template-columns:1fr}.scene{max-width:420px;margin:6px auto 0}
+ .services,.why,.steps{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:160px}section{padding:56px 0}
+ .fab{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:45;gap:10px}
+ .fab a{flex:1;text-align:center;padding:15px;border-radius:14px;font-weight:700;box-shadow:0 10px 28px var(--shadowc)}
+ .fab .c{background:var(--accent);color:var(--onaccent)}.fab .w{background:#25d366;color:#06240f}}
+@media(max-width:540px){.services,.why,.steps{grid-template-columns:1fr}.tel,.nav .btn{display:none}.facts{gap:22px}.chip{display:none}.card{padding:24px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.hero .in-load{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<header id="hd"><div class="wrap nav">
+  <a class="logo" href="#top"><i><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="10" r="2"/><circle cx="10" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12 12c-3 0-5 2.5-5 5 0 1.7 1.3 2.5 2.5 2 1-.4 1.6-.6 2.5-.6s1.5.2 2.5.6c1.2.5 2.5-.3 2.5-2 0-2.5-2-5-5-5Z"/></svg></i><span class="ln">Ветклиника «Лапа»</span></a>
+  <nav><a href="#services">Услуги</a><a href="#why">Почему мы</a><a href="#how">Как это работает</a><a href="#contacts">Контакты</a></nav>
+  <a class="tel" href="tel:+79000000000">+7 900 000-00-00</a>
+  <a class="btn" href="#form">Записаться на приём</a>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  
+  <div class="wrap grid">
+    <div>
+      <span class="badge in-load"><span class="dot"></span><b>★ 4.8</b> 120 отзывов на картах</span>
+      <h1 class="in-load" style="--d:.1s">Заботимся о <em>вашем питомце</em></h1>
+      <p class="lead in-load" style="--d:.2s">Приём врачей, вакцинация, анализы, хирургия и вызов на дом. Принимаем кошек, собак и грызунов, работаем и по выходным.</p>
+      <div class="cta in-load" style="--d:.3s">
+        <a class="btn pulse" href="tel:+79000000000">Позвонить +7 900 000-00-00</a>
+        <a class="btn ghost" href="https://wa.me/79000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F." target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+      <div class="facts in-load" style="--d:.4s"><div class="fact"><b>4.9</b><span>рейтинг клиники</span></div><div class="fact"><b>9 лет</b><span>опыта</span></div><div class="fact"><b>7/7</b><span>принимаем без выходных</span></div></div>
+    </div>
+    <div class="scene in-load" style="--d:.25s" aria-hidden="true">
+      <div class="blob"></div><div class="ring"></div>
+      <div class="big"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="10" r="2"/><circle cx="10" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12 12c-3 0-5 2.5-5 5 0 1.7 1.3 2.5 2.5 2 1-.4 1.6-.6 2.5-.6s1.5.2 2.5.6c1.2.5 2.5-.3 2.5-2 0-2.5-2-5-5-5Z"/></svg></div>
+      <div class="chip a"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.6-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.4 12 20 12 20Z"/></svg></span><span><b>Выезд на дом</b><small>в пределах города</small></span></div><div class="chip b"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b>Приём без записи</b><small>в рабочее время</small></span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track"><span>Приём</span><span>Вакцинация</span><span>Хирургия</span><span>УЗИ</span><span>Груминг</span><span>Выезд на дом</span><span>Приём</span><span>Вакцинация</span><span>Хирургия</span><span>УЗИ</span><span>Груминг</span><span>Выезд на дом</span></div></div>
+
+<section id="services"><div class="wrap">
+  <div class="eyebrow rv">Услуги</div><h2 class="rv">Что мы делаем</h2>
+  <p class="sub rv">Основные услуги и ориентировочные цены. Точную стоимость назовём до начала работы.</p>
+  <div class="services"><div class="svc rv" style="--d:0.00s"><div class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="10" r="2"/><circle cx="10" cy="6" r="2"/><circle cx="14" cy="6" r="2"/><circle cx="18" cy="10" r="2"/><path d="M12 12c-3 0-5 2.5-5 5 0 1.7 1.3 2.5 2.5 2 1-.4 1.6-.6 2.5-.6s1.5.2 2.5.6c1.2.5 2.5-.3 2.5-2 0-2.5-2-5-5-5Z"/></svg></div><h3>Приём врача</h3><p>Осмотр, диагностика, назначения.</p><div class="price">от 900 ₽</div></div><div class="svc rv" style="--d:0.08s"><div class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Вакцинация</h3><p>Импортные вакцины и ветпаспорт.</p><div class="price">от 1 200 ₽</div></div><div class="svc rv" style="--d:0.16s"><div class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div><h3>Анализы и УЗИ</h3><p>Быстрые результаты в день обращения.</p><div class="price">от 600 ₽</div></div><div class="svc rv" style="--d:0.00s"><div class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-8-4.6-8-10.5A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 8 2.5C20 15.4 12 20 12 20Z"/></svg></div><h3>Хирургия</h3><p>Операции от стерилизации до сложных.</p><div class="price">от 3 500 ₽</div></div><div class="svc rv" style="--d:0.08s"><div class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8Z"/><path d="m19 15 .8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8Z"/></svg></div><h3>Груминг</h3><p>Стрижки, уход, гигиена.</p><div class="price">от 1 500 ₽</div></div><div class="svc rv" style="--d:0.16s"><div class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></svg></div><h3>Выезд врача на дом</h3><p>Осмотр и процедуры у вас дома.</p><div class="price">от 2 000 ₽</div></div></div>
+  <p class="note rv" style="text-align:left;margin-top:18px">Цены ориентировочные, уточняйте по телефону +7 900 000-00-00.</p>
+</div></section>
+
+<section class="alt" id="why"><div class="wrap">
+  <div class="eyebrow rv">Преимущества</div><h2 class="rv">Почему выбирают нас</h2>
+  <p class="sub rv">Работаем так, чтобы к нам возвращались и приводили друзей.</p>
+  <div class="why"><div class="rv" style="--d:0.00s"><b>4.9</b><span>оценка владельцев</span></div><div class="rv" style="--d:0.08s"><b>9 лет</b><span>работаем</span></div><div class="rv" style="--d:0.16s"><b>7/7</b><span>дней в неделю</span></div><div class="rv" style="--d:0.24s"><b>0 ₽</b><span>консультация по телефону</span></div></div>
+</div></section>
+
+
+
+<section id="how"><div class="wrap">
+  <div class="eyebrow rv">Процесс</div><h2 class="rv">Как это работает</h2><p class="sub rv">Четыре шага, никаких сюрпризов.</p>
+  <div class="steps"><div class="rv" style="--d:0.0s"><div class="n">1</div><b>Звонок</b><span>Опишите, что с питомцем.</span></div><div class="rv" style="--d:0.1s"><div class="n">2</div><b>Приём</b><span>Приезжайте или вызовите врача.</span></div><div class="rv" style="--d:0.2s"><div class="n">3</div><b>Лечение</b><span>Назначаем и объясняем схему.</span></div><div class="rv" style="--d:0.3s"><div class="n">4</div><b>Контроль</b><span>Напоминаем о прививках и осмотрах.</span></div></div>
+</div></section>
+
+<section class="alt"><div class="wrap"><div class="rating rv">
+  <div class="num">4.8</div>
+  <div><div class="stars">★★★★★</div><b>120 отзывов</b></div>
+  <p>Отзывы клиентов можно прочитать на картах: найдите «Ветклиника «Лапа»» в 2ГИС, Яндекс Картах или Google Картах.</p>
+</div></div></section>
+
+<section class="formsec" id="form"><div class="wrap">
+  <form class="card rv" onsubmit="return send(event)">
+    <h2>Записаться на приём</h2>
+    <p class="s">Оставьте данные, и мы свяжемся в течение 15 минут в рабочее время.</p>
+    <label for="n">Ваше имя</label><input id="n" name="n" placeholder="Как к вам обращаться" required>
+    <label for="p">Телефон</label><input id="p" name="p" type="tel" placeholder="+7 ___ ___-__-__" required>
+    <label for="c">Что вам нужно</label><textarea id="c" name="c" rows="3" placeholder="Например: кошка, 3 года, вялая"></textarea>
+    <button class="btn" type="submit">Отправить заявку</button>
+    <p class="note">Заявка откроется в WhatsApp. Нажимая кнопку, вы соглашаетесь на обработку данных.</p>
+  </form>
+</div></section>
+
+<section id="contacts"><div class="wrap">
+  <div class="eyebrow rv">Контакты</div><h2 class="rv">Приезжайте или звоните</h2><p class="sub rv">Ответим на любые вопросы.</p>
+  <div class="contacts">
+    <div class="rv">
+      <div class="row"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v10h14V10M10 20v-6h4v6"/></svg></span><div><small>Адрес</small>ул. Примерная, 1</div></div>
+      <div class="row"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><div><small>Телефон</small><a href="tel:+79000000000">+7 900 000-00-00</a></div></div>
+      <div class="row"><span class="ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Режим работы</small>Ежедневно, 09:00–21:00</div></div>
+      <div class="row"><a class="btn" href="https://wa.me/79000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F." target="_blank" rel="noopener">Написать в WhatsApp</a></div>
+    </div>
+    <div class="map rv" style="--d:.1s"><iframe loading="lazy" title="Карта" src="https://www.google.com/maps?q=%D0%92%D0%B5%D1%82%D0%BA%D0%BB%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0%20%C2%AB%D0%9B%D0%B0%D0%BF%D0%B0%C2%BB%20%D1%83%D0%BB.%20%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D0%BD%D0%B0%D1%8F%2C%201%20%D0%B2%D0%B0%D1%88%D0%B5%D0%BC%20%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B5&output=embed"></iframe></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Ветклиника «Лапа», вашем городе. Информация на сайте не является публичной офертой.</div></footer>
+<div class="fab"><a class="c" href="tel:+79000000000">Позвонить</a><a class="w" href="https://wa.me/79000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F." target="_blank" rel="noopener">WhatsApp</a></div>
+
+<script>
+var bar=document.getElementById('bar'),hd=document.getElementById('hd');
+addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';hd.classList.toggle('solid',h.scrollTop>20)},{passive:true});
+function count(el){var to=parseFloat(el.dataset.to),dec=+el.dataset.dec||0,t0=performance.now(),dur=1400;if(isNaN(to))return;(function tick(t){var k=Math.min((t-t0)/dur,1),e=1-Math.pow(1-k,3);el.textContent=(to*e).toFixed(dec);if(k<1)requestAnimationFrame(tick)})(t0)}
+var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in');e.target.querySelectorAll('[data-to]').forEach(count);io.unobserve(e.target)})},{threshold:.15}):null;
+document.querySelectorAll('.rv').forEach(function(el){io?io.observe(el):el.classList.add('in')});
+function send(e){e.preventDefault();var f=e.target;var t='Здравствуйте! Заявка с сайта.%0AИмя: '+encodeURIComponent(f.n.value)+'%0AТелефон: '+encodeURIComponent(f.p.value)+'%0AЗапрос: '+encodeURIComponent(f.c.value);window.open('https://wa.me/79000000000?text='+t,'_blank');return false}
+</script>
+</body>
+</html>
